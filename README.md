@@ -1,26 +1,16 @@
 # Scary-baboon-mod
-Mods in 2026 version 826
-using UnityEngine;
+Mods in 2026 version 826using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class GoldSystem : MonoBehaviour
 {
-    public int health = 100;
-    public bool godMode = true;
+    public int gold = 999999; // starting gold for testing
+    public bool debugInfiniteGold = true;
 
-    public void TakeDamage(int damage)
+    public void SpendGold(int amount)
     {
-        if (godMode) return; // ignore damage
+        if (debugInfiniteGold)
+            return; // gold never decreases
 
-        health -= damage;
-
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-    void Die()
-    {
-        Debug.Log("Player died");
+        gold -= amount;
     }
 }
